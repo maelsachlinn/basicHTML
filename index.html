@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive HTML Quiz</title>
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#f4f6f8;
+    margin:0;
+    color:#333;
+}
+header{
+    background:#0078d4;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+.container{
+    max-width:900px;
+    margin:20px auto;
+    padding:20px;
+}
+.question{
+    background:white;
+    padding:20px;
+    margin-bottom:15px;
+    border-radius:10px;
+    box-shadow:0 2px 6px rgba(0,0,0,0.1);
+}
+button{
+    display:block;
+    width:100%;
+    margin:8px 0;
+    padding:10px;
+    border:none;
+    border-radius:6px;
+    background:#e9ecef;
+    cursor:pointer;
+    font-size:16px;
+}
+button:hover{
+    background:#d6e4ff;
+}
+.correct{
+    background:#4caf50 !important;
+    color:white;
+}
+.wrong{
+    background:#f44336 !important;
+    color:white;
+}
+#score{
+    font-size:24px;
+    text-align:center;
+    margin-top:20px;
+    font-weight:bold;
+}
+	
+	#resetBtn{
+    display:block;
+    margin:20px auto;
+    padding:12px 24px;
+    background:#0078d4;
+    color:white;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+#resetBtn:hover{
+    background:#005ea6;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>HTML Fundamentals Quiz</h1>
+    <p>Test your knowledge of basic HTML. No forms or tables used.</p>
+</header>
+
+<div class="container">
+
+<div class="question">
+    <h2>1. Which tag creates the largest heading?</h2>
+    <button onclick="check(this,false)">h6</button>
+    <button onclick="check(this,false)">head</button>
+    <button onclick="check(this,true)">h1</button>
+    <button onclick="check(this,false)">title</button>
+</div>
+
+<div class="question">
+    <h2>2. Which tag is used for a paragraph?</h2>
+    <button onclick="check(this,false)">text</button>
+    <button onclick="check(this,true)">p</button>
+    <button onclick="check(this,false)">para</button>
+    <button onclick="check(this,false)">body</button>
+</div>
+
+<div class="question">
+    <h2>3. Which tag creates a hyperlink?</h2>
+    <button onclick="check(this,false)">link</button>
+    <button onclick="check(this,false)">href</button>
+    <button onclick="check(this,true)">a</button>
+    <button onclick="check(this,false)">url</button>
+</div>
+
+<div class="question">
+    <h2>4. Which tag displays an image?</h2>
+    <button onclick="check(this,false)">image</button>
+    <button onclick="check(this,true)">img</button>
+    <button onclick="check(this,false)">picture</button>
+    <button onclick="check(this,false)">src</button>
+</div>
+
+<div class="question">
+    <h2>5. Which tag creates a bulleted list?</h2>
+    <button onclick="check(this,false)">ol</button>
+    <button onclick="check(this,false)">li</button>
+    <button onclick="check(this,true)">ul</button>
+    <button onclick="check(this,false)">list</button>
+</div>
+
+<div class="question">
+    <h2>6. Which semantic element is commonly used at the top of a webpage?</h2>
+    <button onclick="check(this,true)">header</button>
+    <button onclick="check(this,false)">div</button>
+    <button onclick="check(this,false)">font</button>
+    <button onclick="check(this,false)">br</button>
+</div>
+
+<div class="question">
+<h2>7. Which tag creates a numbered list?</h2>
+<button onclick="check(this,false)">ul</button>
+<button onclick="check(this,true)">ol</button>
+<button onclick="check(this,false)">li</button>
+<button onclick="check(this,false)">list</button>
+</div>
+ 
+<div class="question">
+<h2>8. Which tag is used for a list item?</h2>
+<button onclick="check(this,false)">ul</button>
+<button onclick="check(this,false)">ol</button>
+<button onclick="check(this,true)">li</button>
+<button onclick="check(this,false)">item</button>
+</div>
+ 
+<div class="question">
+<h2>9. Which tag defines the title shown in a browser tab?</h2>
+<button onclick="check(this,false)">head</button>
+<button onclick="check(this,true)">title</button>
+<button onclick="check(this,false)">meta</button>
+<button onclick="check(this,false)">body</button>
+</div>
+ 
+<div class="question">
+<h2>10. Which HTML tag inserts a line break?</h2>
+<button onclick="check(this,false)">hr</button>
+<button onclick="check(this,true)">br</button>
+<button onclick="check(this,false)">break</button>
+<button onclick="check(this,false)">lb</button>
+</div>	
+	
+<button id="resetBtn" onclick="resetQuiz()">Reset Quiz</button>
+
+<div id="score">Score: 0 / 10</div>
+
+<script>
+let score = 0;
+let answered = 0;
+
+function check(button, correct) {
+
+    if(button.parentElement.dataset.done) return;
+
+    button.parentElement.dataset.done = "true";
+    answered++;
+
+    if(correct){
+        button.classList.add("correct");
+        score++;
+    } else {
+        button.classList.add("wrong");
+    }
+
+    document.getElementById("score").innerHTML =
+        `Score: ${score} / ${answered}`;
+}
+</script>
+<script>
+let score = 0;
+let answered = 0;
+
+function check(button, correct) {
+
+    if (button.parentElement.dataset.done) return;
+
+    button.parentElement.dataset.done = "true";
+    answered++;
+
+    if (correct) {
+        button.classList.add("correct");
+        score++;
+    } else {
+        button.classList.add("wrong");
+    }
+
+    updateScore();
+}
+
+function updateScore() {
+    document.getElementById("score").innerHTML =
+        `Score: ${score} / ${answered}`;
+}
+
+function resetQuiz() {
+
+    score = 0;
+    answered = 0;
+
+    document.querySelectorAll(".question").forEach(question => {
+        delete question.dataset.done;
+    });
+
+    document.querySelectorAll("button").forEach(btn => {
+        btn.classList.remove("correct", "wrong");
+    });
+
+    document.getElementById("score").innerHTML = "Score: 0 / 6";
+}
+</script>
+</body>
+</html>
